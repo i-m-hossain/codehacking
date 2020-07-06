@@ -13,3 +13,21 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css');
+
+mix.styles([
+    'public/css/libs/blog-post.css',
+    'public/css/libs/bootstrap.css',
+    'public/css/libs/font-awesome.css',
+    'public/css/libs/sb-admin-2.css',
+    'public/css/libs/metisMenu.css',
+    'public/css/libs/styles.css',
+
+], 'public/css/libs.css');
+
+mix.scripts([
+    'public/js/libs/jquery.js',
+    'public/js/libs/bootstrap.js',
+    'public/js/libs/metisMenu.js',
+    'public/js/libs/sb-admin-2.js',
+    'public/js/libs/scripts.js',
+], 'public/js/libs.js');
