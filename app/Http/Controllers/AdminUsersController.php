@@ -8,6 +8,8 @@ use App\Photo;
 use App\Role;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+
 
 class AdminUsersController extends Controller
 {
@@ -140,5 +142,14 @@ class AdminUsersController extends Controller
     public function destroy($id)
     {
         //
+        $user = User::findOrFail($id);
+        unlink(public_path().$user->photo->file); //deleting the photos from images directory
+        $user->delete();
+        Session::flash('deleted_user','The user has been deleted'); //sending notification that the user is deleted
+
+
+        return redirect('/admin/users');
+
+
     }
 }

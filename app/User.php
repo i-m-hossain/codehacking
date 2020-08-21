@@ -37,10 +37,24 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     public function role(){
-        return $this->belongsTo('App\Role');
+        return $this->belongsTo('App\Role'); //inverse relationship
     }
     public function photo(){
-        return $this->belongsTo('App\Photo');
+        return $this->belongsTo('App\Photo'); //inverse relationship
     }
+
+    public function isAdmin(){
+        if( $this->role->name == "Administrator" && $this->is_active == 1){
+
+            return true;
+
+        }
+        return false;
+    }
+    public function posts(){
+        return $this->hasMany('App\Post');
+    } //one to many relationship  ****This relationship tells that a user can have many posts that's why one to many relationship is applied
+
+
 
 }
