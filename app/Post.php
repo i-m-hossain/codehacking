@@ -20,7 +20,7 @@ class Post extends Model
         return $this->belongsTo('App\Photo'); //inverse relationship
     }
     public function category(){
-        return $this->belongsTo('App\category'); // inverse relationship
+        return $this->belongsTo('App\Category'); // inverse relationship
     }
 
 }

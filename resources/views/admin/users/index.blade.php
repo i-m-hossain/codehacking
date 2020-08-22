@@ -30,7 +30,7 @@
                 <tr>
                     <td>{{$user->id}}</td>
                     <td><a href="{{route('users.edit', $user->id)}}">{{$user->name}}</a></td>
-                    <td><img height="50" src="{{$user->photo ? $photo->photo->file: 'https://via.placeholder.com/300'}}" alt="this is an image"></td>   {{-- see Photo.php model where an accessor is used to get this diectory '/images/...'--}}
+                    <td><img height="50" src="{{$user->photo ? $user->photo->file: 'https://via.placeholder.com/300'}}" alt="this is an image"></td>   {{-- see Photo.php model where an accessor is used to get this diectory '/images/...'--}}
                     <td>{{$user->role ? $user->role->name: 'user has no role'}}</td> {{--if user role exist echo 'user role name' or echo 'user has no role'--}}
                     <td>{{$user->is_active ? "Active": "Not active"}}</td>
                     <td>{{$user->email}}</td>
