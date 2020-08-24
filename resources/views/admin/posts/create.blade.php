@@ -38,7 +38,7 @@
 
 
         <div class="form-group">
-            {!! Form::submit('Create Users', ['class' => 'btn btn-primary']) !!}
+            {!! Form::submit('Create Posts', ['class' => 'btn btn-primary']) !!}
         </div>
 
     {!! form::close() !!}
