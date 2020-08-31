@@ -6,7 +6,7 @@
     <table class="table">
         <thead>
           <tr>
-            <th>ID</th>
+            <th>id</th>
             <th>Owner</th>
             <th>Category</th>
             <th>Photo </th>
@@ -29,11 +29,25 @@
                     <td>{{Str::limit($post->body,20)}}</td>
                     <td>{{$post->created_at->diffForHumans()}}</td>
                     <td>{{$post->updated_at->diffForHumans()}}</td>
+                    <td><a href="{{route('comments.show',$post->id)}}">view comments</a></td>
+{{--                    <td><a href="{{route('home.post', $post->id)}}">View Post</a></td>--}}
+                    <td><a href="{{route('home.post', $post->slug )}}">View Post</a></td> {{--using slug instead of post id because slug is also unique by nature and also it gives pretty url --}}
+
+
                   </tr>
              @endforeach
           @endif
 
         </tbody>
       </table>
+
+{{--      For pagination purpose  --}}
+
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-5">
+{{--            {{$posts->links()}}--}}
+            {{$posts->render()}}
+        </div>
+    </div>
 
 @stop

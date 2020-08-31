@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -36,6 +37,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
     public function role(){
         return $this->belongsTo('App\Role'); //inverse relationship
     }
@@ -55,6 +57,10 @@ class User extends Authenticatable
         return $this->hasMany('App\Post');
     } //one to many relationship  ****This relationship tells that a user can have many posts that's why one to many relationship is applied
 
-
+    /**  Gravatar **/
+    public function getGravatarAttribute(){
+        $hash = md5(strtolower(trim($this->attributes['email']))). "?d=mm";  /** ?d=mm means by defaiult it will be a mystery man */
+        return "http//:www.gravatar.com/avatar/$hash";
+    }
 
 }

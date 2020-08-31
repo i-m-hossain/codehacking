@@ -20,7 +20,8 @@ class AdminPostsController extends Controller
     public function index()
     {
         //
-        $posts = Post::all();
+//        $posts = Post::all(); /** without pagination **/
+        $posts = Post::paginate(2); /** For pagination purpose **/
         return view('admin.posts.index', compact('posts'));
     }
 
@@ -73,6 +74,7 @@ class AdminPostsController extends Controller
     public function show($id)
     {
         //
+
     }
 
     /**
@@ -132,4 +134,19 @@ class AdminPostsController extends Controller
 
 
     }
+    public function post($slug){
+
+        $post = Post::findBySlugOrFail($slug);
+//        $post = Post::whereSlug($id)->get()->first();
+//        dd($post);
+        $categories = category::all();
+        $comments = $post->comments()->whereIsActive(1)->get();
+
+
+       return view('post ',compact('post','categories','comments'));
+    }
+
+
+
+
 }
