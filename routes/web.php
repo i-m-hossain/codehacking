@@ -22,6 +22,10 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/post/{id}',['as'=>'home.post', 'uses'=>'AdminPostsController@post']);
 
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});
+
 
 Route::group(['middleware'=>'Admin'], function(){
     Route::get('/admin', function (){
@@ -35,6 +39,7 @@ Route::group(['middleware'=>'Admin'], function(){
     Route::resource('admin/comment/replies', 'CommentRepliesController');
 
 });
+Route::delete('admin/delete/media', 'AdminMediasController@deleteMedia');
 
 Route::group(['middleware'=>'auth'], function(){
 

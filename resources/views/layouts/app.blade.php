@@ -40,6 +40,10 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+{{--                        @if({{Auth::User}})--}}
+
+{{--                            <li><a href="{{route('admin.index')}}">Admin</a></li>--}}
+{{--                            @endif--}}
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
